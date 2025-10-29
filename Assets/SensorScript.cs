@@ -31,5 +31,6 @@ public class CircuitSensor : MonoBehaviour
             transform.parent.GetComponent<Renderer>().material.color = Color.white;
         }
     }
-}
 
+    
+    }
