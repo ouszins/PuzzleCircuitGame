@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Sensor
+  - Selectable
   layers:
   - Default
   - TransparentFX

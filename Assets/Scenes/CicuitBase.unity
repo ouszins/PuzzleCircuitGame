@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 206928312}
   - component: {fileID: 206928311}
   - component: {fileID: 206928310}
+  - component: {fileID: 206928315}
   m_Layer: 0
   m_Name: CiccuitBase (1)
   m_TagString: Untagged
@@ -256,6 +257,27 @@ Transform:
   - {fileID: 2117086479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &206928315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206928309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &479719597
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +291,7 @@ GameObject:
   - component: {fileID: 479719599}
   - component: {fileID: 479719598}
   - component: {fileID: 479719602}
+  - component: {fileID: 479719603}
   m_Layer: 0
   m_Name: CiccuitBase
   m_TagString: Untagged
@@ -391,6 +414,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &479719603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479719597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894b1f3250d789c449ac7e0ffce3d667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &706640553
 GameObject:
   m_ObjectHideFlags: 0
