@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CorruptState : MonoBehaviour
-{   
+public class CorruptState : State
+{
     //plan for this one is just. to have guido enter corruption
     //over time, corruption should cause a progress bar to elapse
     // if progress bar becomes full, game is over
@@ -17,14 +17,10 @@ public class CorruptState : MonoBehaviour
     // if purple == true, game over
 
     // Start is called before the first frame update
-    void Start()
+    public override State RunCurrentState()
     {
-        
+        return this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
