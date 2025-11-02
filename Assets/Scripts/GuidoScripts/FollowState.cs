@@ -16,6 +16,11 @@ public class FollowHim : State
     // Update is called once per frame
     public override State RunCurrentState()
     {
+        if (player == null)//to stop errors atm, will properly assign a permamnet "player" later
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform; // find the player by tag if not assigned
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance > followRadius)
@@ -32,7 +37,7 @@ public class FollowHim : State
 
         return null;
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(player.position, followRadius);// something similar could be used so sense if circuits are completed?
