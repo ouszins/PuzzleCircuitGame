@@ -17,9 +17,11 @@ public class FollowHim : State
     public override State RunCurrentState()
     {
         if (player == null)//to stop errors atm, will properly assign a permamnet "player" later
-        {
+        
             player = GameObject.FindGameObjectWithTag("Player").transform; // find the player by tag if not assigned
-        }
+        
+        if (player == null)
+            return this; // if still null, stay in this state
 
         float distance = Vector3.Distance(transform.position, player.position);
         //only moves if farther than Stopdistance and within follow distance
