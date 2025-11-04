@@ -74,7 +74,7 @@ public class BeeFSM : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player in contact");
+            Debug.Log("Player in contact with Bee");
             newPlayerContact = true;
         }
 
@@ -89,7 +89,7 @@ public class BeeFSM : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("NOT in contact");
+            Debug.Log("NOT in contact with Bee");
             newPlayerContact = false;
         }
         if (other.CompareTag("Enemy"))
