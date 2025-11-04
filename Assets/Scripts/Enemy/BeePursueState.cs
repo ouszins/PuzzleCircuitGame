@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PursuePlayer : BeeState
+public class BeePursuePlayer : BeeState
 {
     public override BeeState Run()
     {
