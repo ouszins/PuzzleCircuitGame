@@ -9,8 +9,8 @@ public class BeeFSM : MonoBehaviour
     // current file allows for transitions between states for the bee
     public BeeState current;
 
-    public Vector3 newDir = new Vector3(0f, 0f, 0f);
-    public float newSpeed = 0f;
+    public Vector3 newEnemyDir = new Vector3(0f, 0f, 0f);
+    public float newEnemySpeed = 0f;
 
     public bool newIsGrounded = false;
     public bool newPlayerContact = false; // is enemy in contact with players
@@ -28,12 +28,12 @@ public class BeeFSM : MonoBehaviour
     void FixedUpdate()
     {
         //current state passes its values onto new parameters once called
-        BeeState next = current?.Run(newDir, newSpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen);
+        BeeState next = current?.Run(newEnemyDir, newEnemySpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen);
 
         if (next != null)
         {
-            newDir = current.enemyDir;
-            newSpeed = current.enemySpeed;
+            newEnemyDir = current.enemyDir;
+            newEnemySpeed = current.enemySpeed;
             newIsGrounded = current.isGrounded;
             newPlayerContact = current.isPlayerContact;
             newEnemyContact = current.isEnemyContact;
