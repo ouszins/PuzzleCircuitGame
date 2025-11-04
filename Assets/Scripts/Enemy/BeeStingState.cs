@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StingState : MonoBehaviour
+public class BeeStingState : BeeState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override BeeState Run()
     {
-        
+        return this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override BeeState Run(Vector3 enemyDir, float enemySpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen)
     {
-        
+        return this;
     }
 }
