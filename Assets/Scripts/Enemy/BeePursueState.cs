@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BeePursueState : BeeState
 {
+    public GameObject Bee;
+    public GameObject player;
+
+    public void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public override BeeState Run()
     {
         return this;
