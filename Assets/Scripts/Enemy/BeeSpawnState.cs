@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeeDespawnState : BeeState
+public class BeeSpawnState : BeeState
 {
     public override BeeState Run()
     {
@@ -17,13 +17,7 @@ public class BeeDespawnState : BeeState
         this.isPlayerContact = isPlayerContact;
         this.isPlayerSeen = isPlayerSeen;
 
-        //Focus on Despawning first
-        DespawnBee();
         return this;
     }
-
-    public void DespawnBee()
-    {
-        Destroy(transform.parent.parent.gameObject);
-    }
 }
+
