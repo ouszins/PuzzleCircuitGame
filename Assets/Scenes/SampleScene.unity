@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 24397069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.78, y: 1.24, z: -12.83}
+  m_LocalPosition: {x: 9.78, y: 1.24, z: -10.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -245,6 +245,8 @@ MonoBehaviour:
   StopRadius: 4.4
   GooberSpeed: 5
   HeightOffGround: 1.5
+  followTime: 10
+  circuitState: {fileID: 0}
 --- !u!1 &295431478
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,9 +260,11 @@ GameObject:
   - component: {fileID: 295431480}
   - component: {fileID: 295431479}
   - component: {fileID: 295431483}
+  - component: {fileID: 295431484}
+  - component: {fileID: 295431485}
   m_Layer: 0
   m_Name: GuidoTest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,7 +353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2004099776}
+  - {fileID: 433003484}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &295431483
@@ -364,8 +368,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4782e63dab29e4fa2e33767ebd3877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 24397074}
+  currentState: {fileID: 295431484}
+--- !u!114 &295431484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295431478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081c9149f1db2174ebbc4c4ede7bf197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 706735409}
+  followRadius: 10
+  StopRadius: 5
+  GooberSpeed: 5
+  HeightOffGround: 1.5
+  followTime: 10
+  circuitState: {fileID: 433003483}
+--- !u!114 &295431485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295431478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7879dc3090078354599cd1282ed561c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetCircuitTag: Sensor
+  moveSpeed: 5
+  stopDistance: 1
+  heightOffGround: 1.5
+  circuitTimeout: 5
+  nextState: {fileID: 295431484}
 --- !u!1001 &406695204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,6 +471,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+--- !u!1 &433003482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433003484}
+  - component: {fileID: 433003483}
+  m_Layer: 0
+  m_Name: CircuitState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &433003483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433003482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7879dc3090078354599cd1282ed561c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetCircuitTag: Sensor
+  moveSpeed: 5
+  stopDistance: 1
+  heightOffGround: 1.5
+  circuitTimeout: 5
+  nextState: {fileID: 295431484}
+--- !u!4 &433003484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433003482}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 295431482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511484794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1134,7 @@ GameObject:
   - component: {fileID: 1544223575}
   m_Layer: 0
   m_Name: CiccuitBase
-  m_TagString: Selectable
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,55 +1477,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2004099775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2004099776}
-  - component: {fileID: 2004099777}
-  m_Layer: 0
-  m_Name: Follow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2004099776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004099775}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 295431482}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2004099777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004099775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 081c9149f1db2174ebbc4c4ede7bf197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 706735409}
-  followRadius: 10
-  StopRadius: 3
-  GooberSpeed: 5
-  HeightOffGround: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
