@@ -1082,8 +1082,6 @@ GameObject:
   - component: {fileID: 1723916186}
   - component: {fileID: 1723916185}
   - component: {fileID: 1723916184}
-  - component: {fileID: 1723916183}
-  - component: {fileID: 1723916182}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Enemy
@@ -1091,42 +1089,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1723916182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723916181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f79a407a9c3384e4eb4a036ca8cc9a4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDir: {x: 0, y: 0, z: 0}
-  enemySpeed: 0
-  isGrounded: 0
-  isPlayerContact: 0
-  isEnemyContact: 0
-  isPlayerSeen: 0
---- !u!114 &1723916183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723916181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6342eef05283da42bc811f9e2494d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDir: {x: 0, y: 0, z: 0}
-  enemySpeed: 0
-  isGrounded: 0
-  isPlayerContact: 0
-  isEnemyContact: 0
-  isPlayerSeen: 0
 --- !u!136 &1723916184
 CapsuleCollider:
   m_ObjectHideFlags: 0
