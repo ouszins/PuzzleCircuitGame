@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 24397070}
   - component: {fileID: 24397074}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: FollowingTester
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 295431479}
   - component: {fileID: 295431483}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: GuidoTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 295431478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.32, y: 1.91, z: -2.15}
+  m_LocalPosition: {x: 21.28, y: 1.91, z: -2.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 24397074}
+  player: {fileID: 706735409}
 --- !u!1001 &406695204
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,14 +19,15 @@ public class FollowHim : State
         if (player == null)//to stop errors atm, will properly assign a permamnet "player" later
         
             player = GameObject.FindGameObjectWithTag("Player").transform; // find the player by tag if not assigned
-        
+        Debug.Log("Player not found");
         if (player == null)
             return this; // if still null, stay in this state
-
+            Debug.Log("Follow State Active");
         float distance = Vector3.Distance(transform.position, player.position);
         //only moves if farther than Stopdistance and within follow distance
         if (distance >  StopRadius && distance < followRadius)
         {
+            Debug.Log($"{name}: Following this" );
             // Move towards the player
             Vector3 AimPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
             Vector3 direction = (player.position - transform.position).normalized;
