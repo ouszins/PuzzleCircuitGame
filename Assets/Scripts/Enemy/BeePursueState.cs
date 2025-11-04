@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BeePursueState : BeeState
+{
+    public override BeeState Run()
+    {
+        return this;
+    }
+
+    public override BeeState Run(Vector3 enemyDir, float enemySpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen)
+    {
+        return this;
+    }
+}

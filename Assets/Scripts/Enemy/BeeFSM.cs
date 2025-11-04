@@ -9,31 +9,31 @@ public class BeeFSM : MonoBehaviour
     // current file allows for transitions between states for the bee
     public BeeState current;
 
-    public Vector3 enemyDir = new Vector3(0f, 0f, 0f);
-    public float enemySpeed = 0f;
+    public Vector3 newEnemyDir = new Vector3(0f, 0f, 0f);
+    public float newEnemySpeed = 0f;
 
-    public bool isGrounded = false;
-    public bool isPlayerContact = false; // is enemy in contact with players
-    public bool isEnemyContact = false; // is enemy is around other enemies
-    public bool isPlayerSeen = false; // are bees seeing player
+    public bool newIsGrounded = false;
+    public bool newPlayerContact = false; // is enemy in contact with players
+    public bool newEnemyContact = false; // is enemy is around other enemies
+    public bool newPlayerSeen = false; // are bees seeing player
     RaycastHit ray; //what allows the bee to see the player in the first place
 
     public GameObject player;
 
     private void Start()
     {
-        isPlayerContact = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void FixedUpdate()
     {
         //current state passes its values onto new parameters once called
-        BeeState next = current?.Run(newDir, newEnemySpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen);
+        BeeState next = current?.Run(newEnemyDir, newEnemySpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen);
 
         if (next != null)
         {
-            newDir = current.enemyDir;
-            newSpeed = current.enemySpeed;
+            newEnemyDir = current.enemyDir;
+            newEnemySpeed = current.enemySpeed;
             newIsGrounded = current.isGrounded;
             newPlayerContact = current.isPlayerContact;
             newEnemyContact = current.isEnemyContact;
