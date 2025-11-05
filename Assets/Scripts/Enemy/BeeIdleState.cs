@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BeeIdleState : BeeState
 {
+    //to be fair, this isnt really too necessary for just exclusively the bees
+    // but it helps it so that if the bees are stuck, they just retreat to this then they're capable of switching yet again.
+    
     public override BeeState Run()
     {
         return this;
