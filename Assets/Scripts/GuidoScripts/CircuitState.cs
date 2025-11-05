@@ -8,10 +8,11 @@ public class CircuitState : State
 
     public string TargetCircuitTag = "Sensor"; // Tag of the circuit to interact with
     private Transform TargetCircuit;
+
     public float moveSpeed = 5f; // Speed of movement towards the circuit
-    public float stopDistance = 1f; // Distance to stop from the circuit
+    public float stopDistance = 0.5f; // Distance to stop from the circuit
     public float heightOffGround = 1.5f; // Height off the ground to maintain
-    public float bufferDistance = 0.5f; // Additional buffer distance to prevent overshooting
+    public float FollowRadius = 10f; // The distance he should be around the target object
 
 
     public float circuitTimeout = 5f; // Time to spend interacting with the circuit
@@ -20,6 +21,7 @@ public class CircuitState : State
     public State nextState; // The state to transition to after completing the circuit interaction
     public override State RunCurrentState()
     {
+
         if (TargetCircuit == null)
         {
             GameObject circuitObj = GameObject.FindGameObjectWithTag(TargetCircuitTag);
@@ -27,10 +29,13 @@ public class CircuitState : State
             {
                 TargetCircuit = circuitObj.transform;
                 timer = 0f; // Reset timer when circuit is found
+                Debug.Log($"{name}: Found target circuit '{TargetCircuitTag}'.");
+
+
             }
             else
             {
-                
+
                 Debug.LogWarning($"{name}: Target circuit with tag '{TargetCircuitTag}' not found in scene.");
                 // Exit if target circuit is not found
                 timer += Time.deltaTime;
@@ -40,27 +45,28 @@ public class CircuitState : State
                     return nextState; // Transition to next state on timeout
                 }
                 return this;
-            
+
             }
         }
-        Vector3 direction = (TargetCircuit.position - transform.position).normalized;
-        float distance = Vector3.Distance(transform.position, TargetCircuit.position);
 
-        if (distance > stopDistance + bufferDistance)
+        float distance = Vector3.Distance(transform.position, TargetCircuit.position);
+        Vector3 direction = (TargetCircuit.position - transform.position).normalized;
+
+        if (distance <= FollowRadius && distance > stopDistance)
         {
             // Move towards the circuit
             transform.position += direction * moveSpeed * Time.deltaTime;
             transform.LookAt(TargetCircuit); // Face the circuit while moving
         }
-        else
+        else if (distance > FollowRadius)
         {
-            // Interact with the circuit (e.g., complete it)
-            Debug.Log($"{name}: Interacted with circuit '{TargetCircuitTag}'.");
-            TargetCircuit = null; // Reset target 
-            // Transition to the next state
-            return nextState;
+            // Circuit is out of follow radius, reset target to search again
+            Debug.Log($"{name}: Circuit '{TargetCircuitTag}' is out of follow radius. Searching again.");
+            TargetCircuit = null;
+            return nextState; // Transition to next state if circuit is out of range
         }
- 
+
+
 
         transform.position = new Vector3(transform.position.x, heightOffGround, transform.position.z); // Maintain height off the ground
 
@@ -68,21 +74,14 @@ public class CircuitState : State
     }
     private void OnDrawGizmosSelected()
     {
-        if (!string.IsNullOrEmpty(TargetCircuitTag))
-        {
-            // Find all active objects with the tag
-            GameObject[] targets = GameObject.FindGameObjectsWithTag(TargetCircuitTag);
-            if (targets != null && targets.Length > 0)
-            {
-                Gizmos.color = Color.red; // Color for stop distance
-                foreach (GameObject target in targets)
-                {
-                    if (target != null)
-                    {
-                        Gizmos.DrawWireSphere(target.transform.position, stopDistance);
-                    }
-                }
-            }
-        }
+        // Draw follow radius
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, FollowRadius);
+        // Draw stop distance
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, stopDistance);
     }
 }
+
+
+

@@ -25,9 +25,9 @@ public class FollowHim : State
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
-            {
+            
                 player = playerObj.transform;
-            }
+            
             else
             {
                 Debug.LogWarning($"{name}: Player not found in scene.");
@@ -62,7 +62,7 @@ public class FollowHim : State
             Timer = 0f; // Reset timer for next time
             return circuitState; // Switch to CircuitState after followTime seconds
         }
-        return null;
+        return this;
     }
     private void OnDrawGizmosSelected() 
     {
