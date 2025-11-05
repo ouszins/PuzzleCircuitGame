@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class BeeSpawnState : BeeState
 {
+<<<<<<< Updated upstream
+=======
+    /* essentially whats needed here:
+     * planning for the bee to spawn in two formats
+     * two goals in mind essentially
+        - attack guido
+        - attack player
+     * this shouldnt be so bad.
+    */
+
+>>>>>>> Stashed changes
     public override BeeState Run()
     {
         return this;
