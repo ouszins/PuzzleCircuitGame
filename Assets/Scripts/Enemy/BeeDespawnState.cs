@@ -18,6 +18,7 @@ public class BeeDespawnState : BeeState
         this.isPlayerSeen = isPlayerSeen;
 
         //Focus on Despawning first
+        Debug.Log("Bee dead");
         DespawnBee();
         return this;
     }
