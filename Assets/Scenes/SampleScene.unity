@@ -368,6 +368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 295431485}
+  player: {fileID: 706735407}
+  moveDirection: {x: 0, y: 0, z: 0}
+  moveSpeed: 5
 --- !u!114 &295431484
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class FollowHim : State
+public class FollowHim : GuidoState
 {
     public Transform player; //will assigne to player
     public float followRadius = 10f; // the distance he should be around the player
@@ -16,10 +16,16 @@ public class FollowHim : State
     public float followTime = 10f; // time to follow before switching states
     private float Timer = 0f;
 
-    public State circuitState; // state to switch to after following
+    public GuidoState circuitState; // state to switch to after following
 
     // Update is called once per frame
-    public override State RunCurrentState()
+
+    private void Start()
+    {
+        IsFollowingPlayer = true; // Start by following the player
+    }
+    
+    public override GuidoState RunCurrentState()
     {
         if (player == null)//to stop errors atm, will properly assign a permamnet "player" later
         {
@@ -36,6 +42,7 @@ public class FollowHim : State
         }
            
         Timer += Time.deltaTime;
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         //only moves if farther than Stopdistance and within follow distance
@@ -52,21 +59,23 @@ public class FollowHim : State
             transform.position += direction * GooberSpeed * Time.deltaTime;
 
             transform.LookAt(player); // Make the NPC face the player while moving
+
            
         }
-        transform.position = new Vector3(transform.position.x, HeightOffGround, transform.position.z); // keep the NPC on the ground level
+        // keep the NPC at a consistent height off the ground
+        transform.position = new Vector3(transform.position.x, HeightOffGround, transform.position.z); 
 
         if (Timer >= followTime)
         {
             Debug.Log($"{name}: Finished following player, switching to CircuitState.");
             Timer = 0f; // Reset timer for next time
-            return circuitState; // Switch to CircuitState after followTime seconds
+            IsFollowingPlayer = false; // Switch to CircuitState after followTime seconds
         }
         return this;
     }
     private void OnDrawGizmosSelected() 
     {
-        if (player == null)
+        if (player != null)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(player.position, followRadius);// something similar could be used so sense if circuits are completed?
