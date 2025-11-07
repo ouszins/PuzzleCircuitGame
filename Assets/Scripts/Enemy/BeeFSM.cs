@@ -79,7 +79,8 @@ public class BeeFSM : MonoBehaviour
         }
 
         if (other.CompareTag("Enemy"))
-        {
+        {   
+            //Enemy in contact with the player
             newEnemyContact = true;
         }
 
@@ -94,6 +95,7 @@ public class BeeFSM : MonoBehaviour
         }
         if (other.CompareTag("Enemy"))
         {
+            //Enemy not in contact
             newEnemyContact = false;
         }
     }

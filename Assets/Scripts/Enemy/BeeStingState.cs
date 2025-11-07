@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StingState : MonoBehaviour
+public class BeeStingState : BeeState
 {
-    // Start is called before the first frame update
-    void Start()
+
+    /* plan, to break this down into simple terms:
+        - bee approaches you
+        - bee confirms you're there
+        - bee does 5 damage to you
+        - upon doing 5 damage, die
+        - dont forget, health for player. :]
+    */
+    public override BeeState Run()
     {
-        
+        return this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override BeeState Run(Vector3 enemyDir, float enemySpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen)
     {
-        
+        this.isGrounded = isGrounded;
+        this.enemySpeed = enemySpeed;
+        this.isPlayerContact = isPlayerContact;
+        this.isEnemyContact = isEnemyContact;
+        this.isPlayerSeen = isPlayerSeen;
+
+        return this;
     }
 }
