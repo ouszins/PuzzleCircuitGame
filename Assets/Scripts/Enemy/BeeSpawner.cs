@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,18 +22,12 @@ public class BeeSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-<<<<<<< HEAD
-=======
-    /*  commenting out the following for now. gonna work on it more later.
->>>>>>> 9b157944c081aa2447086c1643e91aaeadba4f99
+    //   commenting out the following for now. gonna work on it more later.
     void IEnumerator spawnBee(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(beeInterval);
         GameObject newBee = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
         StartCoroutine(spawnBee(beeInterval, enemy));
     }
-<<<<<<< HEAD
-=======
-    */
->>>>>>> 9b157944c081aa2447086c1643e91aaeadba4f99
 }
+*/
