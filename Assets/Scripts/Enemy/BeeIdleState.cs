@@ -6,8 +6,13 @@ public class BeeIdleState : BeeState
 {
     //to be fair, this isnt really too necessary for just exclusively the bees
     // but it helps it so that if the bees are stuck, they just retreat to this then they're capable of switching yet again.
+<<<<<<< Updated upstream
     
         public override BeeState Run()
+=======
+
+    public override BeeState Run()
+>>>>>>> Stashed changes
     {
         return this;
     }
@@ -22,4 +27,8 @@ public class BeeIdleState : BeeState
 
         return this;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
