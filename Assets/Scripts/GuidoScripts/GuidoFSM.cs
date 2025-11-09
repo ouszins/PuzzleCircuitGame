@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class GuidoFSM : MonoBehaviour
 {
-    public GuidoState currentState; // must assign in inspector(starting state)
+    public GuidoState current; // current file allows for transitions between state
 
     public GameObject player; // reference to player object
 
     public GuidoState FollowState;
     public GuidoState CircuitState;
+
+    //WHAT IS THIS
+
+
+    public bool newIsGrounded = false;
+    public bool newPlayerContact = false; //soGuido doesnt bump into player
+    public bool newPlayerSeen = false; // to keep player in sight.
     
+    //planning to establish as well a ChaseState, for when he is chasing player
+    //This is if I have the time.
+    //You know, since this is just me now.
 
     // Update is called once per frame
 
     public void Start()
     {
         // Find and assign the player object at the start, just to be safe yk
+        //WHAT DO YOU MEAN TO BE SAFE. YOU NEED THIS. 
         player = GameObject.FindGameObjectWithTag("Player");
-        if (currentState == null)
-        {
-            Debug.LogWarning($"{name}: No state assigned at start :(( .");
-            currentState = FollowState; // default to FollowState if none assigned
-        }
-
-        EnableOnlyCurrentState();
 
     }
 
@@ -60,11 +64,17 @@ public class GuidoFSM : MonoBehaviour
         }
     }
 
+    //what is any of that. that literally looks like ai. like holy FUCK.
+    
+
     public void SwitchToThisState(GuidoState newState)
     {
         currentState = newState;
         EnableOnlyCurrentState();
     }
+
+    //This is Stupid. Why do you need a whole ass stupid fucking function to switch fucking states.
+    //SWITCH CASES SWITCH THE FUCKING CASES. ITS IN THE NAME.
 
     public void EnableOnlyCurrentState()
     {
