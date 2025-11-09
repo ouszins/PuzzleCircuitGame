@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class FollowHim : GuidoState
+public class GuidoFollowState : GuidoState
 {
     public Transform player; //will assigne to player
     public float followRadius = 10f; // the distance he should be around the player

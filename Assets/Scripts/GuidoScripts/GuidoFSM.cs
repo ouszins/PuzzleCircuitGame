@@ -32,7 +32,7 @@ public class GuidoFSM : MonoBehaviour
 
     }
 
-    private void Update()
+    /* private void Update()
     {
         if (current == null)
         {
@@ -62,12 +62,13 @@ public class GuidoFSM : MonoBehaviour
                 Debug.LogWarning($"{name}: Current state is unrecognized.");
                 break;
         }
-    }
+    } */ // I dont know what any of this is. James inputted all of this
+
 
     //what is any of that. that literally looks like ai. like holy FUCK.
-    
 
-    public void SwitchToThisState(GuidoState newState)
+
+    /* public void SwitchToThisState(GuidoState newState)
     {
         current = newState;
         EnableOnlyCurrentState();
@@ -82,7 +83,62 @@ public class GuidoFSM : MonoBehaviour
             FollowState.enabled = (current == FollowState);
         if (CircuitState != null)
             CircuitState.enabled = (current == CircuitState);
+    }  
+    keeping this code for further evidence.
+
+    //WHY IS THIS HERE. */
+
+    //taken from my OWN code from the BeeAI
+    //triggers for player coming into contact with Guido
+
+    public string CurrentStateAsString
+    {
+        get
+        {
+            switch (current)
+            {
+                case GuidoSpawnState:
+                    return "Spawning..";
+                case GuidoIdleState:
+                    return "Idling..";
+                case GuidoFollowState:
+                    return "Following..";
+                case GuidoAttackState:
+                    return "Attacking Bees..";
+                case GuidoDespawnState:
+                    return "Despawning..";
+            }
+        }
+
     }
 
-    //WHY IS THIS HERE.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player in contact with Bee");
+            newPlayerContact = true;
+        }
+
+        if (other.CompareTag("Enemy"))
+        {
+            //Enemy in contact with the player
+            newEnemyContact = true;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("NOT in contact with Bee");
+            newPlayerContact = false;
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            //Enemy not in contact
+            newEnemyContact = false;
+        }
+    }
 }
