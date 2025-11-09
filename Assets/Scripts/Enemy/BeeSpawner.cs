@@ -30,8 +30,5 @@ public class BeeSpawner : MonoBehaviour
         StartCoroutine(spawnBee(beeInterval, enemy));
     }
 }
-<<<<<<< Updated upstream
+
 */
-=======
-*/
->>>>>>> Stashed changes

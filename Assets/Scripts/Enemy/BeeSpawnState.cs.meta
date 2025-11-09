@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Scripts/Enemy/BeeSpawnState.cs.meta
 guid: 08708f95c9afb2448adb38840e52bf07
+========
+guid: d7a196e5bb01c024692e5af4c00893c2
+>>>>>>>> Stashed changes:Assets/Scripts/Enemy/BeeIdleState.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

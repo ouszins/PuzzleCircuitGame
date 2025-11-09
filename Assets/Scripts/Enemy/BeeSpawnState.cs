@@ -27,9 +27,5 @@ public class BeeSpawnState : BeeState
 
         return this;
     }
-<<<<<<< Updated upstream
+    
 }
-
-=======
-}
->>>>>>> Stashed changes

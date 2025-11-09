@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
+
+guid: c8e3aac0c897e0243b2d20fca08c9cfa
 guid: d7a196e5bb01c024692e5af4c00893c2
-=======
-<<<<<<<< Updated upstream:Assets/Scripts/Enemy/BeeIdleState.cs.meta
-guid: d7a196e5bb01c024692e5af4c00893c2
-========
 guid: 35f1544a3b2cd474d82cb9ffad3e826e
->>>>>>>> Stashed changes:Assets/Scripts/Enemy/BeePursueState.cs.meta
->>>>>>> Stashed changes
+guid: d8e994b0786fec44a92a935616ab356b
+guid: 35f1544a3b2cd474d82cb9ffad3e826e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -26,8 +26,6 @@ public class BeePursueState : BeeState
 
         return this;
     }
-<<<<<<< Updated upstream
+
 }
-=======
-}
->>>>>>> Stashed changes
+
