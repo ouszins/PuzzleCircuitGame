@@ -34,25 +34,25 @@ public class GuidoFSM : MonoBehaviour
 
     private void Update()
     {
-        if (currentState == null)
+        if (current == null)
         {
             Debug.LogWarning($"{name}: No current state assigned in FSM.");
             return;
         }
         // Run the current state and get the next state if there's a transition
-        currentState.RunCurrentState();
+        current.RunCurrentState();
 
-        switch (currentState)
+        switch (current)
         {
             case FollowHim: 
-                if (currentState.IsFollowingCircuit == false)
-                {
+                if (current.IsFollowingCircuit == false)
+                {   
                     Debug.Log("FSM changing to Follow State");
                     SwitchToThisState(CircuitState);
                 }
                 break;
             case CircuitFinder:
-                if (currentState.IsFollowingCircuit == false)
+                if (current.IsFollowingCircuit == false)
                 {
                     Debug.Log("FSM changing to Follow State");
                     SwitchToThisState(FollowState);
@@ -69,7 +69,7 @@ public class GuidoFSM : MonoBehaviour
 
     public void SwitchToThisState(GuidoState newState)
     {
-        currentState = newState;
+        current = newState;
         EnableOnlyCurrentState();
     }
 
@@ -79,9 +79,10 @@ public class GuidoFSM : MonoBehaviour
     public void EnableOnlyCurrentState()
     {
         if (FollowState != null)
-            FollowState.enabled = (currentState == FollowState);
+            FollowState.enabled = (current == FollowState);
         if (CircuitState != null)
-            CircuitState.enabled = (currentState == CircuitState);
+            CircuitState.enabled = (current == CircuitState);
     }
 
+    //WHY IS THIS HERE.
 }
