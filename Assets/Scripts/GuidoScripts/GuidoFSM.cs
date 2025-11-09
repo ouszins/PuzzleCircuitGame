@@ -4,26 +4,74 @@ using UnityEngine;
 
 public class GuidoFSM : MonoBehaviour
 {
-    public State currentState; // must assign in inspector(starting state)
+    public GuidoState currentState; // must assign in inspector(starting state)
 
+    public GameObject player; // reference to player object
+
+    public GuidoState FollowState;
+    public GuidoState CircuitState;
+    
 
     // Update is called once per frame
 
+    public void Start()
+    {
+        // Find and assign the player object at the start, just to be safe yk
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (currentState == null)
+        {
+            Debug.LogWarning($"{name}: No state assigned at start :(( .");
+            currentState = FollowState; // default to FollowState if none assigned
+        }
+
+        EnableOnlyCurrentState();
+
+    }
+
     private void Update()
     {
-        State nextState = currentState?.RunCurrentState();// If variable is not null run current state, if not run
-        //Will run the state and return the next state to switch to when done
-        Debug.Log("Update is running, current state is: " + currentState);
-        if (nextState != null && nextState != currentState)
+        if (currentState == null)
         {
-            //switch to the enxt state
-            SwitchToTheNextState(nextState);
-            Debug.Log("Switched to next state: " + currentState);
+            Debug.LogWarning($"{name}: No current state assigned in FSM.");
+            return;
+        }
+        // Run the current state and get the next state if there's a transition
+        currentState.RunCurrentState();
+
+        switch (currentState)
+        {
+            case FollowHim: 
+                if (currentState.IsFollowingCircuit == false)
+                {
+                    Debug.Log("FSM changing to Follow State");
+                    SwitchToThisState(CircuitState);
+                }
+                break;
+            case CircuitFinder:
+                if (currentState.IsFollowingCircuit == false)
+                {
+                    Debug.Log("FSM changing to Follow State");
+                    SwitchToThisState(FollowState);
+                }
+                break;
+            default:
+                Debug.LogWarning($"{name}: Current state is unrecognized.");
+                break;
         }
     }
-    private void SwitchToTheNextState(State nextState) //switch current state to the state we pass in
+
+    public void SwitchToThisState(GuidoState newState)
     {
-        Debug.Log("Switching from " + currentState + " to " + nextState);
-        currentState = nextState;
+        currentState = newState;
+        EnableOnlyCurrentState();
     }
+
+    public void EnableOnlyCurrentState()
+    {
+        if (FollowState != null)
+            FollowState.enabled = (currentState == FollowState);
+        if (CircuitState != null)
+            CircuitState.enabled = (currentState == CircuitState);
+    }
+
 }

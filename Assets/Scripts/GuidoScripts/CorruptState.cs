@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CorruptState : State
+public class CorruptState : GuidoState
 {
     //plan for this one is just. to have guido enter corruption
     //over time, corruption should cause a progress bar to elapse
@@ -17,7 +17,7 @@ public class CorruptState : State
     // if purple == true, game over
 
     // Start is called before the first frame update
-    public override State RunCurrentState()
+    public override GuidoState RunCurrentState()
     {
         return this;
     }
