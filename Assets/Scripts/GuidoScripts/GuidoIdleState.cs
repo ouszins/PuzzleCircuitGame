@@ -18,6 +18,7 @@ public class GuidoIdleState : GuidoState
         this.isPlayerSeen = isPlayerSeen;
         this.isBeeSeen = isBeeSeen;
 
+        return this;
         //This is just him being out here.
     }
 }

@@ -11,7 +11,7 @@ public class GuidoSpawnState : GuidoState
 
     public override GuidoState Run(Vector3 guidoDir, float guidoSpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen, bool isBeeSeen)
     {
-        this.guidoDir = enemyDir;
+        this.guidoDir = guidoDir;
         this.isGrounded = isGrounded;
         this.isEnemyContact = isEnemyContact;
         this.isPlayerContact = isPlayerContact;

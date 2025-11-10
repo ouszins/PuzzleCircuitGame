@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuidoFollowState : BeeState
+public class GuidoFollowState : GuidoState
 {
     public GameObject Guido;
     public GameObject player;
@@ -26,6 +26,7 @@ public class GuidoFollowState : BeeState
         this.isPlayerSeen = isPlayerSeen;
         this.isBeeSeen = isBeeSeen;
 
+        return this;
         //This is just him being out here for the time being.
         //must figure out how to get him to follow player.
     }

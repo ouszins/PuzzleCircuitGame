@@ -16,7 +16,7 @@ public class GuidoFSMachine : MonoBehaviour
     public bool newPlayerContact = false; //soGuido doesnt bump into player
     public bool newEnemyContact = false; //so guido isnt bumping into enemies persay.
     public bool newPlayerSeen = false; // to keep player in sight.
-    public bool newBeesSeen = false;
+    public bool newBeeSeen = false;
     RaycastHit ray; //what allows guido to see anything and anyone in the first place.
 
     //planning to establish as well a ChaseState, for when he is chasing player
@@ -32,16 +32,16 @@ public class GuidoFSMachine : MonoBehaviour
     void FixedUpdate()
     {
         //current states pass its values onto new parameters once called
-        GuidoState next = current?.Run(newGuidoDir, newGuidoSpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen, newBeesSeen);
+        GuidoState next = current?.Run(newGuidoDir, newGuidoSpeed, newIsGrounded, newPlayerContact, newEnemyContact, newPlayerSeen, newBeeSeen);
         if (next != null) 
         {
             newGuidoDir = current.guidoDir;
             newGuidoSpeed = current.guidoSpeed;
             newIsGrounded = current.isGrounded;
-            newPlayerContact = current.playerContact;
-            newEnemyContact = current.enemyContact;
-            newPlayerSeen = current.playerSeen;
-            newBeesSeen = current.beesSeen;
+            newPlayerContact = current.isPlayerContact;
+            newEnemyContact = current.isEnemyContact;
+            newPlayerSeen = current.isPlayerSeen;
+            newBeeSeen = current.isBeeSeen;
             current = next;
         }
 
