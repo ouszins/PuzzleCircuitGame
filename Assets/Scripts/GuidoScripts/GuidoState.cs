@@ -13,6 +13,6 @@ public abstract class GuidoState : MonoBehaviour
     public bool isPlayerSeen = false; // is guido seeing player
     public bool isBeeSeen = false; // does guido spot a bee
 
-    public abstract BeeState Run();
-    public abstract BeeState Run(Vector3 enemyDir, float enemySpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen, bool isBeeSeen);
+    public abstract GuidoState Run();
+    public abstract GuidoState Run(Vector3 enemyDir, float enemySpeed, bool isGrounded, bool isPlayerContact, bool isEnemyContact, bool isPlayerSeen, bool isBeeSeen);
 }

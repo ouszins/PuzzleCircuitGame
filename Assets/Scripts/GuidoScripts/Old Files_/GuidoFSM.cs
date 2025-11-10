@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class GuidoFSM : MonoBehaviour
     public bool newIsGrounded = false;
     public bool newPlayerContact = false; //soGuido doesnt bump into player
     public bool newPlayerSeen = false; // to keep player in sight.
-    
+
     //planning to establish as well a ChaseState, for when he is chasing player
     //This is if I have the time.
     //You know, since this is just me now.
@@ -31,6 +32,7 @@ public class GuidoFSM : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
     }
+    */
 
     /* private void Update()
     {
@@ -90,7 +92,7 @@ public class GuidoFSM : MonoBehaviour
 
     //taken from my OWN code from the BeeAI
     //triggers for player coming into contact with Guido
-
+    /*
     public string CurrentStateAsString
     {
         get
@@ -142,3 +144,4 @@ public class GuidoFSM : MonoBehaviour
         }
     }
 }
+*/

@@ -47,7 +47,7 @@ public class GuidoFSMachine : MonoBehaviour
 
     }
 
-    public guidoState getCurrentState()
+    public GuidoState getCurrentState()
     {
         return current;
     }
@@ -72,6 +72,7 @@ public class GuidoFSMachine : MonoBehaviour
                 case GuidoDespawnState:
                     return "Despawning..";
             }
+            return "Null";
         }
 
     }
@@ -80,7 +81,7 @@ public class GuidoFSMachine : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player in contact with Bee");
+            Debug.Log("Player in contact with Guido");
             newPlayerContact = true;
         }
 
@@ -96,7 +97,7 @@ public class GuidoFSMachine : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("NOT in contact with Bee");
+            Debug.Log("NOT in contact with Guido");
             newPlayerContact = false;
         }
         if (other.CompareTag("Enemy"))
